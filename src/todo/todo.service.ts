@@ -12,6 +12,10 @@ export class TodoService {
     return `This action returns all todo`;
   }
 
+  newFindAll() {
+    return `This action returns all todo in version 1.1`;
+  }
+
   findOne(id: number) {
     return `This action returns a #${id} todo`;
   }
