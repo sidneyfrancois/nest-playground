@@ -1,0 +1,20 @@
+
+
+@hostname = localhost
+@port = 3000
+
+@host = http://{{hostname}}:{{port}}
+
+GET {{host}}/todo
+
+###
+GET {{host}}/todo/3
+
+###
+PATCH {{host}}/todo/3
+
+###
+DELETE {{host}}/todo/3
+
+###
+POST {{host}}/todo
