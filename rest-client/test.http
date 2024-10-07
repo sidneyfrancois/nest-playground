@@ -4,7 +4,7 @@
 
 @host = http://{{hostname}}:{{port}}
 
-GET {{host}}
+GET {{host}}/v1
 
 ###
 POST {{host}}/v1/chain
