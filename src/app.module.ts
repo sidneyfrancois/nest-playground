@@ -4,7 +4,6 @@ import { ChainModule } from './chain/chain.module';
 import { ConfigModule } from '@nestjs/config';
 import * as path from 'path';
 import { configValidationSchema } from './config/config.schema';
-import { TaskModule } from './task/task.module';
 
 @Module({
     imports: [
@@ -18,7 +17,6 @@ import { TaskModule } from './task/task.module';
         }),
         TodoModule,
         ChainModule,
-        TaskModule,
     ],
 })
 export class AppModule {}

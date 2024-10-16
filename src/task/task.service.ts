@@ -3,7 +3,7 @@ import { Task } from './interfaces/task.interface';
 
 @Injectable()
 export class TaskService {
-    private readonly cats: Task[];
+    private readonly cats: Task[] = [];
 
     create(cat: Task) {
         this.cats.push(cat);
