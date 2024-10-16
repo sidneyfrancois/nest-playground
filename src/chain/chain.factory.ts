@@ -6,36 +6,36 @@ import { HandlerA } from './handlers/handlerA';
 
 @Injectable()
 export class ChainFactory {
-  private readonly handlerMap: { [key: string]: Handler };
+    private readonly handlerMap: { [key: string]: Handler };
 
-  constructor(handlerA: HandlerA, handlerB: HandlerB, handlerC: HandlerC) {
-    // Initialize a mapping of handlers
-    this.handlerMap = {
-      A: handlerA,
-      B: handlerB,
-      C: handlerC,
-    };
-  }
+    constructor(handlerA: HandlerA, handlerB: HandlerB, handlerC: HandlerC) {
+        // Initialize a mapping of handlers
+        this.handlerMap = {
+            A: handlerA,
+            B: handlerB,
+            C: handlerC,
+        };
+    }
 
-  public createChain(handlerOrder: string[]): Handler | null {
-    let firstHandler: Handler | null = null;
-    let previousHandler: Handler | null = null;
+    public createChain(handlerOrder: string[]): Handler | null {
+        let firstHandler: Handler | null = null;
+        let previousHandler: Handler | null = null;
 
-    handlerOrder.forEach((handlerType) => {
-      const currentHandler = this.handlerMap[handlerType];
-      if (currentHandler) {
-        if (!firstHandler) {
-          firstHandler = currentHandler; // Set the first handler
-        }
+        handlerOrder.forEach((handlerType) => {
+            const currentHandler = this.handlerMap[handlerType];
+            if (currentHandler) {
+                if (!firstHandler) {
+                    firstHandler = currentHandler; // Set the first handler
+                }
 
-        if (previousHandler) {
-          previousHandler.setNext(currentHandler); // Link the previous handler to the current
-        }
+                if (previousHandler) {
+                    previousHandler.setNext(currentHandler); // Link the previous handler to the current
+                }
 
-        previousHandler = currentHandler; // Move to the current handler
-      }
-    });
+                previousHandler = currentHandler; // Move to the current handler
+            }
+        });
 
-    return firstHandler; // Return the first handler in the chain
-  }
+        return firstHandler; // Return the first handler in the chain
+    }
 }

@@ -4,14 +4,14 @@ import { VersioningType } from '@nestjs/common';
 import { Logger } from '@nestjs/common';
 
 async function bootstrap() {
-  const app = await NestFactory.create(AppModule);
-  app.enableVersioning({
-    type: VersioningType.URI,
-    defaultVersion: '1',
-  });
+    const app = await NestFactory.create(AppModule);
+    app.enableVersioning({
+        type: VersioningType.URI,
+        defaultVersion: '1',
+    });
 
-  await app.listen(process.env.PORT);
+    await app.listen(process.env.PORT);
 
-  Logger.verbose(`Application is running on port ${process.env.PORT}`, 'API');
+    Logger.verbose(`Application is running on port ${process.env.PORT}`, 'API');
 }
 bootstrap();

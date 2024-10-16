@@ -7,13 +7,13 @@ import { ChainController } from './chain.controller';
 import { ChainFactory } from './chain.factory';
 
 @Module({
-  controllers: [ChainController],
-  providers: [
-    ProcessHandlerUseCase,
-    HandlerA,
-    HandlerB,
-    HandlerC,
-    ChainFactory,
-  ],
+    controllers: [ChainController],
+    providers: [
+        ProcessHandlerUseCase,
+        HandlerA,
+        HandlerB,
+        HandlerC,
+        ChainFactory,
+    ],
 })
 export class ChainModule {}
