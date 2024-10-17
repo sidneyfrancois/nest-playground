@@ -4,6 +4,7 @@ import { ChainModule } from './chain/chain.module';
 import { ConfigModule } from '@nestjs/config';
 import * as path from 'path';
 import { configValidationSchema } from './config/config.schema';
+import { UploadModule } from './upload/upload.module';
 
 @Module({
     imports: [
@@ -17,6 +18,7 @@ import { configValidationSchema } from './config/config.schema';
         }),
         TodoModule,
         ChainModule,
+        UploadModule,
     ],
 })
 export class AppModule {}
