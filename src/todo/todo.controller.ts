@@ -6,8 +6,12 @@ import {
     Param,
     Delete,
     Version,
+    Query,
+    UsePipes,
 } from '@nestjs/common';
 import { TodoService } from './todo.service';
+import { RemoveTrim } from 'src/pipes/validations/remove-trim.pipe';
+import { StringValidation } from 'src/pipes/transformers/string-validation.pipe';
 
 @Controller('todo')
 export class TodoController {
@@ -29,9 +33,15 @@ export class TodoController {
         return this.todoService.newFindAll();
     }
 
+    @Get('pipes')
+    @UsePipes(RemoveTrim, StringValidation)
+    findOneValid(@Query('name') name: string) {
+        return this.todoService.findOne(name);
+    }
+
     @Get(':id')
     findOne(@Param('id') id: string) {
-        return this.todoService.findOne(+id);
+        return this.todoService.findOne(id);
     }
 
     @Patch()

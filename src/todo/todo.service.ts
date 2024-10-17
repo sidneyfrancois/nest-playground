@@ -25,8 +25,8 @@ export class TodoService {
         return `This action returns all todo in version 1.1`;
     }
 
-    findOne(id: number) {
-        return `This action returns a #${id} todo`;
+    findOne(name: string) {
+        return `This action returns a #${name} todo`;
     }
 
     update() {
