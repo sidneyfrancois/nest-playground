@@ -1,14 +1,20 @@
-import { Injectable } from '@nestjs/common';
-import { CreateTodoDto } from './dto/create-todo.dto';
-import { UpdateTodoDto } from './dto/update-todo.dto';
+import {
+    ForbiddenException,
+    HttpException,
+    HttpStatus,
+    Injectable,
+} from '@nestjs/common';
 import { TaskService } from 'src/task/task.service';
 
 @Injectable()
 export class TodoService {
     constructor(private readonly taskService: TaskService) {}
 
-    create(createTodoDto: CreateTodoDto) {
-        return 'This action adds a new todo';
+    create() {
+        throw new ForbiddenException('test message for the client frontend', {
+            cause: new Error('test cause for forbidden'),
+            description: 'description for the error',
+        });
     }
 
     findAll() {
@@ -23,8 +29,18 @@ export class TodoService {
         return `This action returns a #${id} todo`;
     }
 
-    update(id: number, updateTodoDto: UpdateTodoDto) {
-        return `This action updates a #${id} todo`;
+    update() {
+        throw new HttpException(
+            {
+                status: HttpStatus.NOT_FOUND,
+                message: 'this is a custom message for the client',
+                httpExceptionOptions: {},
+            },
+            HttpStatus.NOT_FOUND,
+            {
+                cause: new Error('test error cause post'),
+            },
+        );
     }
 
     remove(id: number) {
