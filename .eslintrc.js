@@ -17,7 +17,11 @@ module.exports = {
     },
     ignorePatterns: ['.eslintrc.js'],
     rules: {
-        '@typescript-eslint/no-unused-vars': 'warn', // Warn unused variables instead of Error (default)
+        // Emmits warning but ignore rule when it starts with _
+        '@typescript-eslint/no-unused-vars': [
+            'warn',
+            { argsIgnorePattern: '^_', varsIgnorePattern: '^_' },
+        ],
         '@typescript-eslint/interface-name-prefix': 'off',
         '@typescript-eslint/explicit-function-return-type': 'off',
         '@typescript-eslint/explicit-module-boundary-types': 'off',
